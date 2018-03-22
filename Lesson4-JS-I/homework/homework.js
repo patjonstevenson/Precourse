@@ -89,7 +89,7 @@ function isEven(num) {
 function isOdd(num) {
   // return true if num is odd
   // otherwise return false
-  return num % 2 != 0;
+  return num % 2 !== 0;
 }
 
 function square(num) {
