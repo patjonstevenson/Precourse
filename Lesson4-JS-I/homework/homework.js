@@ -107,8 +107,9 @@ function raiseToPower(num, exponent) {
   // raise num to whatever power is passed in as exponent
   if (exponent === 0) {
     return 1;
-  }
+  } else {
   return num * raiseToPower(num, exponent - 1);
+  }
 }
 
 function roundNumber(num) {
