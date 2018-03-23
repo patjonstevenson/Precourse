@@ -70,7 +70,7 @@ function largestNumber(numbers) {
   // numbers is an array of integers
   // return the largest integer
   return numbers.reduce( function (x, y) {
-    if (x > y) { return x; } else { return y; } 
+    if (y > x) { return y; } else { return x; } 
   } );
 }
 
