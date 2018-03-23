@@ -48,35 +48,46 @@ function deleteProperty(object, property) {
 function newUser(name, email, password) {
   // create a new object with properties matching the arguments passed in.
   // return the new object
-
+  return {
+    'name': name,
+    'email': email,
+    'password': password,
+  };
 }
 
 function hasEmail(user) {
   // return true if the user has a value for the property 'email'
   // otherwise return false
+  return !( user['email'] === null || user['email'] === undefined );
 }
 
 function hasProperty(object, property) {
   // return true if the object has the value of the property argument
   // property is a string
   // otherwise return false
+  return !( object[property] === null || object[property] === undefined );
 }
 
 function verifyPassword(user, password) {
   // check to see if the provided password matches the password property on the user object
   // return true if they match
   // otherwise return false
+  return user.password === password;
 }
 
 function updatePassword(user, newPassword) {
   // replace the existing password on the user object with the value of newPassword
   // return the object
+  user.password = newPassword;
+  return user;
 }
 
 function addFriend(user, newFriend) {
   // user has a property called friends that is an array
   // add newFriend to the end of the friends array
   // return the user object
+  user.friends.push(newFriend);
+  return user;
 }
 
 function setUsersToPremium(users) {
@@ -84,6 +95,10 @@ function setUsersToPremium(users) {
   // each user object has the property 'isPremium'
   // set each user's isPremium property to true
   // return the users array
+  for (let user in users) {
+    users[user]['isPremium'] = true; 
+  }
+  return users;
 }
 
 function sumUserPostLikes(user) {
@@ -92,6 +107,7 @@ function sumUserPostLikes(user) {
   // each post object has an integer property called 'likes'
   // sum together the likes from all the post objects
   // return the sum
+  return user['posts'].reduce( (x, y) => x + y['likes'], 0 );
 }
 
 function addCalculateDiscountPriceMethod(storeItem) {
@@ -103,6 +119,11 @@ function addCalculateDiscountPriceMethod(storeItem) {
   // price -> 20
   // discountPercentage -> .2
   // discountPrice = 20 - (20 * .2)
+  
+  storeItem['calculateDiscountPrice'] = function() {
+    return storeItem['price'] - (storeItem['price'] * storeItem['discountPercentage']);
+  };
+  return storeItem;
 }
 
 // Do not modify code below this line.
